@@ -116,6 +116,36 @@ bot.on('message', message => {
     }
 })
 
+// CITATION MAINTENANCE
+
+bot.on('message', message => {
+    if (message.content === "!citation"){
+        var help_embed = new Discord.RichEmbed()
+            .setColor('#04C6FF')
+            .addField("Maintenance", "La commande !citation est en maintenance.")
+            .addField("Pour plus d'informations", "http://bit.ly/narubot")
+            .setFooter("ナルト crée par @Boruto 👼#0275")
+        message.channel.sendEmbed(help_embed);
+        //message.reply("Bonjour, Je suis ナルト. Voici les commandes disponible : \n \n Si vous utilisez les commande suivante : \n \n !citation (nom du personnage), une citation aléatoire apparaitra ! \n !personnages, la liste des personnages disponibles apparaitra !");
+        console.log('maintenancecitation');
+    }
+})
+
+// ADDCITATION MAINTENANCE
+
+bot.on('message', message => {
+    if (message.content === "!addcitation"){
+        var help_embed = new Discord.RichEmbed()
+            .setColor('#04C6FF')
+            .addField("Maintenance", "La commande !addcitation est en maintenance.")
+            .addField("Pour plus d'informations", "http://bit.ly/narubot")
+            .setFooter("ナルト crée par @Boruto 👼#0275")
+        message.channel.sendEmbed(help_embed);
+        //message.reply("Bonjour, Je suis ナルト. Voici les commandes disponible : \n \n Si vous utilisez les commande suivante : \n \n !citation (nom du personnage), une citation aléatoire apparaitra ! \n !personnages, la liste des personnages disponibles apparaitra !");
+        console.log('maintenanceadd');
+    }
+})
+
 
 // !Presentation
 
