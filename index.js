@@ -147,6 +147,22 @@ bot.on('message', message => {
 })
 
 
+// VPS
+
+bot.on('message', message => {
+    if (message.content === "!vps"){
+        var help_embed = new Discord.RichEmbed()
+            .setColor('#04C6FF')
+            .addField("Nouveauté", "ナルト est maintenant héberger sous un VPS, il sera donc disponible 24H/24")
+            .addField("Pour plus d'informations", "http://bit.ly/narubot")
+            .setFooter("ナルト crée par @Boruto 👼#0275")
+        message.channel.sendEmbed(help_embed);
+        //message.reply("Bonjour, Je suis ナルト. Voici les commandes disponible : \n \n Si vous utilisez les commande suivante : \n \n !citation (nom du personnage), une citation aléatoire apparaitra ! \n !personnages, la liste des personnages disponibles apparaitra !");
+        console.log('vps');
+    }
+})
+
+
 // !Presentation
 
 bot.on('message', message => {
