@@ -15,7 +15,7 @@ bot.on('ready', () => {
 
 // LOGIN 
 
-bot.login(process.env.BOT_TOKEN);
+bot.login('Mzg0NDcwMzMyODM0MTg1MjE2.DPzU9A.bZNKhmsEN0R3GUXtNRHvTgpQDqE');
 
 // FONCTIONS
 
