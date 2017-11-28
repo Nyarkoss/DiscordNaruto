@@ -1,5 +1,23 @@
 const Discord = require('discord.js');
 
+// BASE DE DONNES
+
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('database.json')
+const db = low(adapter);
+
+var citationsnumber = db.get('citations').size().value();
+
+// TABLE POUR BASE DE DONNES
+
+db.defaults({ citations: []})
+    .write()
+
+
+var citationsnumber = db.get('citations').size().value();
+
 // VAR !
 
 var bot = new Discord.Client();
@@ -18,6 +36,15 @@ bot.on('ready', () => {
 bot.login('Mzg0NDcwMzMyODM0MTg1MjE2.DPzU9A.bZNKhmsEN0R3GUXtNRHvTgpQDqE');
 
 // FONCTIONS
+
+// FONCTION BDD
+
+function citations_random(min, max) {
+    min = Math.ceil(0);
+    max = Math.floor(citationsnumber);
+    citations = Math.floor(Math.random() * (max - min +1) + min);
+    console.log("citations")//ici
+}
 
 // FONCTION NARUTO
 
@@ -82,6 +109,41 @@ bot.on('message', message => {
         message.reply("oui ?");
         console.log('naruto uicmoi');
     }
+
+
+// BASE DE DONNES
+
+    if (!message.content.startsWith(prefix)) return;
+    var args = message.content.substring(prefix.length).split(" ");
+
+    switch (args[0].toLowerCase()){
+
+        case "addcitation":
+        var value = message.content.substr(12);
+        var author = message.author.toString();
+        //var citationsid = Math(number + 1);
+        console.log(value);
+        message.reply("Citations ajoutée à la base de données")
+        
+        db.get('citations')
+            .push({ citations_value: value, citations_author: author})
+            .write();
+
+            break;
+            
+                    case "citation" :
+                    
+                            citations_random();
+                            console.log(citations);
+                    
+                            var citation = db.get(`citations[${citations}].citations_value`).toString().value();
+                            var citations_author = db.get(`citations[${citations}].citations_author`).toString().value();
+                            console.log(citations);
+                    
+                            message.channel.send(`${citation} (citation de ${citations_author})`)
+                            
+                            break; 
+                }
 
 })
 
